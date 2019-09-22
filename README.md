@@ -147,6 +147,6 @@ This guide will help you to deploy Django App on Heroku
 
 	- `python manage.py migrate`
 
-	- `python manage.py create superuser`
+	- `python manage.py createsuperuser`
 
 23.  That's it, now browse your website.
