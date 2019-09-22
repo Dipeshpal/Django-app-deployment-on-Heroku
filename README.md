@@ -1,3 +1,4 @@
+
 # Django-app-deployment-on-Heroku
 Tutorial step by step for Django app deployment on Heroku
 
@@ -25,19 +26,20 @@ This guide will help you to deploy Django App on Heroku
 
 9. After Installing above tools, open command prompt in "Publish" directory and run following command in command prompt to login on Heroku-
 
-heroku login
+       heroku login
 
  ![Heroku login](https://i.ibb.co/m57X3cP/3.png)
 
 11.  Now you have to create virtual environment, open command prompt in "Publish" directory and run following command in command prompt-
 
     virtualenv .
+
 ![virtualenv](https://i.ibb.co/n3cgjHr/4.png)
 
 
 12. Activate virtual environment
 
-    .\Scripts\activate
+        .\Scripts\activate
 
 ![activate venv](https://i.ibb.co/RjRfkT7/5.png)
 
