@@ -30,9 +30,9 @@ This guide will help you to deploy Django App on Heroku
 
  ![Heroku login](https://i.ibb.co/m57X3cP/3.png)
 
-11.  Now you have to create virtual environment, open command prompt in "Publish" directory and run following command in command prompt-
+10.  Now you have to create virtual environment, open command prompt in "Publish" directory and run following command in command prompt-
 
-    virtualenv .
+         virtualenv .
 
 ![virtualenv](https://i.ibb.co/n3cgjHr/4.png)
 
@@ -43,13 +43,26 @@ This guide will help you to deploy Django App on Heroku
 
 ![activate venv](https://i.ibb.co/RjRfkT7/5.png)
 
-10. Create requirements.txt file with all your project requirements.	
+13. Install following on your virtual envirenment (our virtual enviroment is already activate in command prompt, you just need to install following)-
+
+	- **Installing gunicorn**
+	
+		    pip install gunicorn
+	
+	- **Installing django-heroku**:
+
+		    pip install django-heroku
+		    
+14. Create requirements.txt file with all your project requirements.	
 	
 	 - Go to your production app and activate it's virtual environment and run following commands- 
 		
 		    pip freeze > requirements.txt
 	
 	- It will create txt file and now move this file to your app folder. Example- "Publish/your_app_dolder/requirements.txt". 
+	
+	- Or you can install all the packages required by your project one by one on production's virtual environment.
+	
 	![requirements.txt](https://i.ibb.co/G9yPg3P/6.png)
 
 	- Check your python version
@@ -62,48 +75,36 @@ This guide will help you to deploy Django App on Heroku
 	
 		![python version](https://i.ibb.co/y6Yh2q1/8.png)
 
-11. Create file "**Procfile**" without any extension in your app directory. And enter following lines on it by replacing "myproject" with your app name.
+15. Create file "**Procfile**" **without any extension** in your app directory. And enter following lines on it by replacing "myproject" with your app name.
 
 	```
 	web: gunicorn myproject.wsgi
 	```
-	![Prrocfile](https://i.ibb.co/CQzHNSv/9.png)
+	```
+	Example 1- web: gunicorn Dipesh_Pal.wsgi
+	Example 2- web: gunicorn Your_App_Folder_Name.wsgi
+	```
+	![Procfile](https://i.ibb.co/PwPCsJb/16.png)
 
-12. Install following on your virtual envirenment (our virtual enviroment is already activate in command prompt, you just need to install following)-
 
-	- **Installing gunicorn**
-	
-		    pip install gunicorn
-	
-	- **Installing django-heroku**:
+16. Open your project in "Publish" folder in  any editor and edit "settings.py" file-
 
-		    pip install django-heroku
+	- Add the following  import statement to the top of  settings.py
 
-13. Open your project in "Publish" folder in  any editor and edit "settings.py" file-
-
-	- Add the following  `import`  statement to the top of  `settings.py`:
-
-		```python
+		```
 		import django_heroku
 		```
 
 
 	- Then add the following to the bottom of  `settings.py`:
 
-		```python
+		```
 		# Activate Django-Heroku.
 		django_heroku.settings(locals())
 		``` 
- 
-14. Now type following to check version of django-heroku, gunicorn and others files with following output-
-		
-		pip freeze
-	
-	- Copy the output and add paste it on the bottom of the "requirements.txt" we create in step number 10 above.
-	
-		![add new lines](https://i.ibb.co/fMhdT0w/10.png)
 
-15. Login in heroku and just check your [heroku dashboard](https://dashboard.heroku.com/apps), it should look like this-
+
+17. Login in heroku and just check your [heroku dashboard](https://dashboard.heroku.com/apps), it should look like this-
 
 	![Heroku Dashboard](https://i.ibb.co/2N571HB/11.png)
 
@@ -147,6 +148,6 @@ This guide will help you to deploy Django App on Heroku
 
 	- `python manage.py migrate`
 
-	- `python manage.py createsuperuser`
+	- `python manage.py create superuser`
 
 23.  That's it, now browse your website.
